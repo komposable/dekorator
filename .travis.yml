@@ -3,12 +3,13 @@ sudo: false
 
 before_install:
   - gem update --system
-  - gem install bundler -v 1.17.3
+  - gem install bundler
 
 rvm:
   - 2.3
   - 2.4
   - 2.5
+  - 2.6
   - ruby-head
 
 cache:

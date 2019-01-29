@@ -33,4 +33,4 @@ install:
   - bundle install
 
 script:
-  - bundle exec rake
+  - bundle exec rake test:all_with_coverage

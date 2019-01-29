@@ -1,6 +1,18 @@
 # Dekorator
 
-An opinionated way of organizing model-view code in Ruby on Rails, based on decorators.
+[![Build Status](https://travis-ci.org/pantographe/dekorator.svg?branch=master)](https://travis-ci.org/pantographe/dekorator)
+[![Gem Version](https://badge.fury.io/rb/dekorator.svg)](https://rubygems.org/gems/dekorator)
+[![Coverage Status](https://coveralls.io/repos/github/pantographe/dekorator/badge.svg)](https://coveralls.io/github/pantographe/dekorator)
+[![Inch CI](https://inch-ci.org/github/pantographe/dekorator.svg?branch=master)](https://inch-ci.org/github/pantographe/dekorator)
+[![Yardoc](https://img.shields.io/badge/doc-yardoc-blue.svg)](https://www.rubydoc.info/github/pantographe/dekorator/master)
+
+**Dekorator** is an opinionated way of organizing model-view code in Ruby on Rails, based on _decorators_.
+
+## Compatibility
+
+* Ruby 2.3+
+* Rails 5.0+
+
 
 ## Installation
 

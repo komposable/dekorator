@@ -8,3 +8,5 @@ gemspec
 gem "activerecord", "~> 5.0"
 gem "activemodel", "~> 5.0"
 gem "rubocop"
+
+gem "appraisal", require: false

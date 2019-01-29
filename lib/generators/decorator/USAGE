@@ -1,0 +1,9 @@
+Description:
+  Generate a fresh new decorator
+
+Example:
+    `rails generate decorator User`
+
+    User decorator.
+        Decorator: app/decorators/user_decorator.rb
+        Test:      test/decorators/user_decorator_test.rb

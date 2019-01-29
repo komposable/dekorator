@@ -1,0 +1,114 @@
+AllCops:
+  TargetRubyVersion: 2.2
+  DisabledByDefault: true
+  Exclude:
+    - lib/generators/**/templates/**/*
+
+Gemspec/OrderedDependencies:
+  Enabled: true
+
+Style/BlockDelimiters:
+  Enabled: true
+
+Style/BracesAroundHashParameters:
+  Enabled: true
+  EnforcedStyle: no_braces
+
+Style/Dir:
+  Enabled: true
+
+Style/Encoding:
+  Enabled: true
+
+Style/For:
+  Enabled: true
+  EnforcedStyle: each
+
+Style/MethodCallWithoutArgsParentheses:
+  Enabled: true
+
+Style/MethodDefParentheses:
+  Enabled: true
+
+Style/FrozenStringLiteralComment:
+  Enabled: true
+  EnforcedStyle: always
+
+Naming/ConstantName:
+  Enabled: true
+
+Naming/FileName:
+  Enabled: true
+
+Naming/MethodName:
+  Enabled: true
+
+Naming/PredicateName:
+  Enabled: true
+
+Naming/VariableName:
+  Enabled: true
+
+Lint/DeprecatedClassMethods:
+  Enabled: true
+
+Layout/AlignParameters:
+  Enabled: true
+
+Layout/BlockAlignment:
+  Enabled: true
+  EnforcedStyleAlignWith: start_of_block
+
+Layout/BlockEndNewline:
+  Enabled: true
+
+Layout/CaseIndentation:
+  Enabled: true
+
+Layout/ClosingParenthesisIndentation:
+  Enabled: true
+
+Layout/ConditionPosition:
+  Enabled: true
+
+Layout/DefEndAlignment:
+  Enabled: true
+
+Layout/DotPosition:
+  Enabled: true
+
+Layout/ElseAlignment:
+  Enabled: true
+
+Layout/EmptyLines:
+  Enabled: true
+
+Layout/EmptyLinesAroundAccessModifier:
+  Enabled: true
+
+Layout/SpaceAroundBlockParameters:
+  Enabled: true
+
+Layout/SpaceAroundEqualsInParameterDefault:
+  Enabled: true
+
+Layout/SpaceAroundOperators:
+  Enabled: true
+
+Layout/SpaceBeforeBlockBraces:
+  Enabled: true
+
+Layout/SpaceBeforeComma:
+  Enabled: true
+
+Layout/SpaceInsideArrayLiteralBrackets:
+  Enabled: true
+
+Layout/SpaceInsideHashLiteralBraces:
+  Enabled: true
+
+Layout/SpaceInsideParens:
+  Enabled: true
+
+Layout/TrailingWhitespace:
+  Enabled: true

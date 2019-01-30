@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    dekorator (0.1.0)
+    dekorator (1.0.0.pre.1)
       actionview (>= 5.0, < 6.1)
       activesupport (>= 5.0, < 6.1)
       railties (>= 5.0, < 6.1)

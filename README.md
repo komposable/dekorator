@@ -8,6 +8,8 @@
 
 **Dekorator** is an opinionated way of organizing model-view code in Ruby on Rails, based on _decorators_.
 
+**Not production ready**
+
 ## Compatibility
 
 * Ruby 2.3+

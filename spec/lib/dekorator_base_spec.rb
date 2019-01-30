@@ -9,7 +9,7 @@ RSpec.describe Dekorator::Base do
   let(:decorated_post) { PostDecorator.new(post) }
   let(:decorated_post_with_comments) { PostDecorator.new(post) }
 
-  describe "eslf#decorate" do
+  describe "self#decorate" do
     context "with object" do
       it { expect(ApplicationDecorator.decorate(post)).to be_a(PostDecorator) }
       it { expect(PostDecorator.decorate(post)).to be_a(PostDecorator) }

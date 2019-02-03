@@ -4,11 +4,11 @@
 
 source "https://rubygems.org"
 
-gem "activerecord"
-gem "activemodel"
-gem "activesupport"
-gem "actionview"
-gem "railties"
+gem "activerecord", ">= 5.0", "< 6.1", require: false
+gem "activemodel", ">= 5.0", "< 6.1", require: false
+gem "activesupport", ">= 5.0", "< 6.1", require: false
+gem "actionview", ">= 5.0", "< 6.1", require: false
+gem "railties", ">= 5.0", "< 6.1", require: false
 gem "appraisal", require: false
 gem "rubocop", require: false
 gem "rails", "~> 5.2"

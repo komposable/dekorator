@@ -6,8 +6,6 @@ require "digest/md5"
 class ApplicationDecorator < Dekorator::Base; end
 
 class UserDecorator < ApplicationDecorator
-  include ActionView::Helpers::AssetTagHelper
-
   decorates_association :posts
   decorates_association :comments
 
@@ -15,8 +13,8 @@ class UserDecorator < ApplicationDecorator
     [first_name, last_name].join(" ")
   end
 
-  def gravatar_image_tag
-    image_tag("https://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(email)}", alt: "")
+  def gravatar_image_url
+    "https://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(email)}"
   end
 end
 

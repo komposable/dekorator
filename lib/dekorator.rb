@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
 require "dekorator/version"
-require "active_support/core_ext/object/blank"
-require "active_support/core_ext/module/delegation"
 
+# :nodoc
 module Dekorator
   class DecoratorNotFound < ArgumentError; end
 
@@ -19,9 +18,11 @@ module Dekorator
       #
       # @raise [DecoratorNotFound] if decorator is not found.
       def decorate(object_or_collection, with: nil)
-        return object_or_collection if object_or_collection.blank?
+        if object_or_collection.respond_to?(:empty?) && object_or_collection.empty? || !object_or_collection
+          return object_or_collection
+        end
 
-        with = _guess_decorator(object_or_collection) if with.nil? && object_or_collection.present?
+        with = _guess_decorator(object_or_collection) if with.nil? && object_or_collection
 
         raise DecoratorNotFound, "Can't guess decorator for #{object_or_collection.class.name} object" if with.nil?
 
@@ -58,8 +59,11 @@ module Dekorator
         end
       end
 
+      # Guess and returns the decorated object class.
+      #
+      # @return [Class] the decorated object class.
       def base_class
-        name.gsub("Decorator", "").safe_constantize
+        _safe_constantize(name.gsub("Decorator", ""))
       end
 
       private
@@ -77,18 +81,31 @@ module Dekorator
       def _guess_decorator(object_or_enumerable)
         object_or_enumerable = object_or_enumerable.first if object_or_enumerable.is_a? Enumerable
 
-        "#{object_or_enumerable.class}Decorator".safe_constantize if object_or_enumerable.present?
+        _safe_constantize("#{object_or_enumerable.class}Decorator") if object_or_enumerable
+      end
+
+      def _safe_constantize(class_name)
+        Object.const_get(class_name)
+      rescue NameError => _e
+        nil
       end
     end
 
-    delegate :decorate, to: :class
-
+    # :nodoc
     def initialize(object)
       @decorated_associations = {}
 
       super(object)
     end
 
+    # :nodoc
+    def decorate(object_or_collection, with: nil)
+      self.class.decorate(object_or_collection, with: with)
+    end
+
+    # Returns the decorated object.
+    #
+    # @return [Object] the decorated object.
     def object
       __getobj__
     end
@@ -118,6 +135,6 @@ module Dekorator
       end
     end
   end
-end
 
-require "dekorator/railtie" if defined?(Rails)
+  require "dekorator/railtie" if defined?(Rails)
+end

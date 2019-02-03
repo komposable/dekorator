@@ -31,16 +31,22 @@ And then execute:
 
 ## Getting started
 
+### Rails
+
 Run the following command to set up your project:
 
     $ rails generate dekorator:install
 
 This command will create an `ApplicationDecorator` file.
 
+### Other
+
+Simple create use `Dekorator::Base` or extend it.
+
 
 ## Usage
 
-Generate a new decorator with the `decorator` generator:
+With Rails, you could generate a new decorator with the `decorator` generator:
 
     $ rails generate decorator user
 
@@ -61,6 +67,8 @@ class UserDecorator < ApplicationDecorator
   # end
 end
 ```
+
+Otherwise, simply create a class that extend `Dekorator::Base` or you base decorator. Then do as previously
 
 ### Associations
 

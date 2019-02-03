@@ -1,10 +1,7 @@
 PATH
   remote: ..
   specs:
-    dekorator (1.0.0.pre.1)
-      actionview (>= 5.0, < 6.1)
-      activesupport (>= 5.0, < 6.1)
-      railties (>= 5.0, < 6.1)
+    dekorator (1.0.0.pre.2)
 
 GEM
   remote: https://rubygems.org/
@@ -188,16 +185,16 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  actionview
-  activemodel
-  activerecord
-  activesupport
+  actionview (>= 5.0, < 6.1)
+  activemodel (>= 5.0, < 6.1)
+  activerecord (>= 5.0, < 6.1)
+  activesupport (>= 5.0, < 6.1)
   appraisal
   bundler (~> 2.0)
   coveralls
   dekorator!
   rails (~> 5.2)
-  railties
+  railties (>= 5.0, < 6.1)
   rake (~> 10.0)
   rspec (~> 3.0)
   rubocop

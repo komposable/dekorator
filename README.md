@@ -21,7 +21,7 @@ This gem has been created by [Pantographe](https://pantographe.studio).
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Add this line to your application `Gemfile`:
 
 ```ruby
 gem "dekorator"
@@ -65,7 +65,7 @@ end
 
 ### Associations
 
-If you want to automatically decorates association for a decorated object,
+If you want to automatically decorate an association for a decorated object,
 you have to use `#decorates_association` as following:
 
 ```ruby
@@ -90,8 +90,8 @@ decorated_user.posts.first # => PostDecorator
 
 ### Specify decorator
 
-If you want to create specific decorator or sub-decorator, you could simply
-specify the decorator class that should be use.
+If you want to create a specific decorator or sub-decorator, you can simply
+specify the decorator class that should be used.
 
 ```ruby
 class AdminDecorator < ApplicationDecorator
@@ -101,7 +101,7 @@ decorated_user = decorator(User.first, with: AdminDecorator)
 decorated_user # => AdminDecorator
 ```
 
-You also could specify the decorator for associations:
+You can also specify the decorator for associations:
 
 ```ruby
 class UserDecorator < ApplicationDecorator
@@ -141,10 +141,10 @@ end
 
 ### Devise
 
-If you use [`device`][devise] gem you may have an issue if you decorate your
+If you use the [`Devise`][devise] gem you may have an issue if you decorate your
 `User` model.
 
-You must define `#devise_scope` as following. Devise need to manage with
+You must define `#devise_scope` as following. Devise needs to manage with the
 `User` model (https://github.com/plataformatec/devise/blob/369ba267efaa10d01c8dba59b09c3b94dd9e5551/lib/devise/mapping.rb#L35).
 
 ```ruby
@@ -164,7 +164,7 @@ After checking out the repo, run `bin/setup` to install dependencies. Then, run
 prompt that will allow you to experiment.
 
 To install this gem onto your local machine, run `bundle exec rake install`.
-To release a new version, update the version number in `version.rb`, and then
+To release a new version, update the version number in `version.rb`, then
 run `bundle exec rake release`, which will create a git tag for the version,
 push git commits and tags, and push the `.gem` file to [rubygems.org].
 
@@ -181,7 +181,7 @@ The gem is available as open source under the terms of the [MIT License].
 
 ## Code of Conduct
 
-Everyone interacting in the Dekorator project’s codebases, issue trackers,
+Everyone interacting in the Dekorator project codebases, issue trackers,
 chat rooms and mailing lists is expected to follow the [code of conduct].
 
 [activeadmin]: https://activeadmin.info/11-decorators.html

@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Moved to Komposable familly ([#13](https://github.com/komposable/dekorator/pull/13))
+- Moved to Komposable organization ([#13](https://github.com/komposable/dekorator/pull/13))
 
 ## 1.0.0.pre.1 - 2019-01-30
 

@@ -1,24 +1,27 @@
 # Dekorator
 
-[![Build Status](https://travis-ci.org/pantographe/dekorator.svg?branch=master)](https://travis-ci.org/pantographe/dekorator)
+[![Build Status](https://travis-ci.org/komposable/dekorator.svg?branch=master)](https://travis-ci.org/komposable/dekorator)
 [![Gem Version](https://badge.fury.io/rb/dekorator.svg)](https://rubygems.org/gems/dekorator)
-[![Coverage Status](https://coveralls.io/repos/github/pantographe/dekorator/badge.svg)](https://coveralls.io/github/pantographe/dekorator)
-[![Inch CI](https://inch-ci.org/github/pantographe/dekorator.svg?branch=master)](https://inch-ci.org/github/pantographe/dekorator)
-[![Yardoc](https://img.shields.io/badge/doc-yardoc-blue.svg)](https://www.rubydoc.info/github/pantographe/dekorator/master)
+[![Maintainability](https://api.codeclimate.com/v1/badges/f7ab08512ead00da34c0/maintainability)](https://codeclimate.com/github/komposable/dekorator/maintainability)
+[![Coverage Status](https://coveralls.io/repos/github/komposable/dekorator/badge.svg)](https://coveralls.io/github/komposable/dekorator)
+[![Inch CI](https://inch-ci.org/github/komposable/dekorator.svg?branch=master)](https://inch-ci.org/github/komposable/dekorator)
+[![Yardoc](https://img.shields.io/badge/doc-yardoc-blue.svg)](https://www.rubydoc.info/github/komposable/dekorator/master)
 
-**Dekorator** is an opinionated way of organizing model-view code in Ruby on Rails, based on _decorators_.
+**Dekorator** is an opinionated way of organizing model-view code in
+Ruby on Rails, based on _decorators_.
 
-**Not production ready**
+**Not production ready yet**
+
+This gem has been created by [Pantographe](https://pantographe.studio).
 
 ## Compatibility
 
 * Ruby 2.3+
 * Rails 5.0+
 
-
 ## Installation
 
-Add this line to your application's Gemfile:
+Add this line to your application `Gemfile`:
 
 ```ruby
 gem "dekorator"
@@ -28,7 +31,6 @@ And then execute:
 
     $ bundle
 
-
 ## Getting started
 
 Run the following command to set up your project:
@@ -36,7 +38,6 @@ Run the following command to set up your project:
     $ rails generate dekorator:install
 
 This command will create an `ApplicationDecorator` file.
-
 
 ## Usage
 
@@ -64,7 +65,7 @@ end
 
 ### Associations
 
-If you want to automatically decorates association for a decorated object,
+If you want to automatically decorate an association for a decorated object,
 you have to use `#decorates_association` as following:
 
 ```ruby
@@ -89,8 +90,8 @@ decorated_user.posts.first # => PostDecorator
 
 ### Specify decorator
 
-If you want to create specific decorator or sub-decorator, you could simply 
-specify the decorator class that should be use.
+If you want to create a specific decorator or sub-decorator, you can simply
+specify the decorator class that should be used.
 
 ```ruby
 class AdminDecorator < ApplicationDecorator
@@ -100,7 +101,7 @@ decorated_user = decorator(User.first, with: AdminDecorator)
 decorated_user # => AdminDecorator
 ```
 
-You also could specify the decorator for associations:
+You can also specify the decorator for associations:
 
 ```ruby
 class UserDecorator < ApplicationDecorator
@@ -140,10 +141,10 @@ end
 
 ### Devise
 
-If you use [`device`][devise] gem you may have an issue if you decorate your
+If you use the [`Devise`][devise] gem you may have an issue if you decorate your
 `User` model.
 
-You must define `#devise_scope` as following. Devise need to manage with
+You must define `#devise_scope` as following. Devise needs to manage with the
 `User` model (https://github.com/plataformatec/devise/blob/369ba267efaa10d01c8dba59b09c3b94dd9e5551/lib/devise/mapping.rb#L35).
 
 ```ruby
@@ -156,24 +157,35 @@ class UserDecorator < ApplicationDecorator
 end
 ```
 
-
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+After checking out the repo, run `bin/setup` to install dependencies. Then, run
+`rake spec` to run the tests. You can also run `bin/console` for an interactive
+prompt that will allow you to experiment.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+To install this gem onto your local machine, run `bundle exec rake install`.
+To release a new version, update the version number in `version.rb`, then
+run `bundle exec rake release`, which will create a git tag for the version,
+push git commits and tags, and push the `.gem` file to [rubygems.org].
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/pantographe/dekorator. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at
+https://github.com/komposable/dekorator. This project is intended to be a safe,
+welcoming space for collaboration, and contributors are expected to adhere to
+the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+The gem is available as open source under the terms of the [MIT License].
 
 ## Code of Conduct
 
-Everyone interacting in the Dekorator project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/pantographe/dekorator/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the Dekorator project codebases, issue trackers,
+chat rooms and mailing lists is expected to follow the [code of conduct].
 
 [activeadmin]: https://activeadmin.info/11-decorators.html
 [devise]: https://github.com/plataformatec/devise/
+[rubygems.org]: https://rubygems.org
+[MIT License]: https://opensource.org/licenses/MIT
+[code of conduct]: https://github.com/komposable/dekorator/blob/master/CODE_OF_CONDUCT.md

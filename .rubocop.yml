@@ -3,6 +3,7 @@ AllCops:
   DisabledByDefault: true
   Exclude:
     - lib/generators/**/templates/**/*
+    - tmp/**/*
 
 Gemspec/OrderedDependencies:
   Enabled: true

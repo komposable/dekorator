@@ -7,12 +7,11 @@
 [![Inch CI](https://inch-ci.org/github/komposable/dekorator.svg?branch=master)](https://inch-ci.org/github/komposable/dekorator)
 [![Yardoc](https://img.shields.io/badge/doc-yardoc-blue.svg)](https://www.rubydoc.info/github/komposable/dekorator/master)
 
-**Dekorator** is an opinionated way of organizing model-view code in
-Ruby on Rails, based on _decorators_.
+**Dekorator** is a lightweight library to implement _presenters_ and/or _decorators_ in your Rails app. It has less features than [`draper`](https://github.com/drapergem/draper) and aims at having a lower memory footprint.
 
 **Not production ready yet**
 
-This gem has been created by [Pantographe](https://pantographe.studio).
+This gem has been inspired by our Rails development practices at [Pantographe](https://pantographe.studio), and the [Ruby memory, ActiveRecord and Draper](https://medium.com/appaloosa-store-engineering/ruby-memory-activerecord-and-draper-64f06abeeb34) talk by [Benoit Tigeot](https://github.com/benoittgt).
 
 ## Compatibility
 

@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-#
+
 require File.expand_path("../fixtures/models.rb", __dir__)
 require File.expand_path("../fixtures/decorators.rb", __dir__)
 

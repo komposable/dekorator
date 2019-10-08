@@ -4,7 +4,11 @@ require "simplecov"
 SimpleCov.start
 
 require "bundler/setup"
+Bundler.require(:default, :test)
+
 require "dekorator"
+
+Dir["./spec/support/**/*.rb"].each { |file| require file }
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

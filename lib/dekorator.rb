@@ -92,30 +92,30 @@ module Dekorator
     def object
       __getobj__
     end
+  end
 
-    if defined?(ActiveRecord::Relation)
-      class DecoratedEnumerableProxy < DelegateClass(ActiveRecord::Relation)
-        include Enumerable
+  if defined?(ActiveRecord::Relation)
+    class DecoratedEnumerableProxy < DelegateClass(ActiveRecord::Relation)
+      include Enumerable
 
-        delegate :as_json, :collect, :map, :each, :[], :all?, :include?,
-                 :first, :last, :shift, to: :decorated_collection
-        delegate :each, to: :to_ary
+      delegate :as_json, :collect, :map, :each, :[], :all?, :include?,
+               :first, :last, :shift, to: :decorated_collection
+      delegate :each, to: :to_ary
 
-        def initialize(collection, decorator_class)
-          super(collection)
+      def initialize(collection, decorator_class)
+        super(collection)
 
-          @decorator_class = decorator_class
-        end
-
-        def wrapped_collection
-          __getobj__
-        end
-
-        def decorated_collection
-          @decorated_collection ||= wrapped_collection.collect { |member| @decorator_class.decorate(member) }
-        end
-        alias to_ary decorated_collection
+        @decorator_class = decorator_class
       end
+
+      def wrapped_collection
+        __getobj__
+      end
+
+      def decorated_collection
+        @decorated_collection ||= wrapped_collection.collect { |member| @decorator_class.decorate(member) }
+      end
+      alias to_ary decorated_collection
     end
   end
 end

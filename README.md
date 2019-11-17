@@ -1,6 +1,6 @@
 # Dekorator
 
-[![Build Status](https://travis-ci.org/komposable/dekorator.svg?branch=master)](https://travis-ci.org/komposable/dekorator)
+[![Tests](https://github.com/komposable/dekorator/workflows/Tests/badge.svg)](https://github.com/komposable/dekorator/actions)
 [![Gem Version](https://badge.fury.io/rb/dekorator.svg)](https://rubygems.org/gems/dekorator)
 [![Maintainability](https://api.codeclimate.com/v1/badges/f7ab08512ead00da34c0/maintainability)](https://codeclimate.com/github/komposable/dekorator/maintainability)
 [![Coverage Status](https://coveralls.io/repos/github/komposable/dekorator/badge.svg)](https://coveralls.io/github/komposable/dekorator)
@@ -15,7 +15,7 @@ This gem has been inspired by our Rails development practices at [Pantographe](h
 
 ## Compatibility
 
-* Ruby 2.3+
+* Ruby 2.4+
 * Rails 5.0+
 
 ## Installation

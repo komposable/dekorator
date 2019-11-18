@@ -20,7 +20,7 @@ module Dekorator
       #
       # @raise [DecoratorNotFound] if decorator is not found.
       def decorate(object_or_collection, with: nil)
-        return object_or_collection if object_or_collection.blank?
+        return object_or_collection if decorable_object?(object_or_collection)
 
         with = _guess_decorator(object_or_collection) if with.nil? && object_or_collection.present?
 
@@ -79,6 +79,12 @@ module Dekorator
         object_or_enumerable = object_or_enumerable.first if object_or_enumerable.is_a? Enumerable
 
         "#{object_or_enumerable.class}Decorator".safe_constantize if object_or_enumerable.present?
+      end
+
+      def decorable_object?(object_or_collection)
+        object_or_collection.blank? \
+          || object_or_collection.is_a?(Dekorator::Base) \
+          || (defined?(ActiveRecord::Relation) && object_or_collection.is_a?(Dekorator::DecoratedEnumerableProxy))
       end
     end
 

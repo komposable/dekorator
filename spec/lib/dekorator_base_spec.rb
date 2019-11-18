@@ -39,6 +39,10 @@ RSpec.describe Dekorator::Base do
     context "with block" do
       it { expect { |b| PostDecorator.decorate(post, &b) }.to yield_with_args(PostDecorator) }
     end
+
+    context "with decorated object" do
+      it { expect(ApplicationDecorator.decorate(decorated_post)).to be_a(PostDecorator) }
+    end
   end
 
   describe "self#decorates_association" do

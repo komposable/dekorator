@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- Avoid deep decoration ([#25](https://github.com/komposable/dekorator/pull/25))
+
 ### Changed
 - Moved to Komposable organization ([#13](https://github.com/komposable/dekorator/pull/13))
 - Replace Travis CI by Github Actions and remove ruby 2.3 support ([#23](https://github.com/komposable/dekorator/pull/23))

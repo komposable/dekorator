@@ -38,9 +38,11 @@ jobs:
         gem install bundler
         bundle config --global gemfile gemfiles/rails_${{ matrix.versions.rails }}.gemfile
         bundle config --global path vendor/bundle
+
     - name: Install gems
       run: |
         bundle install --jobs $(nproc) --retry 3
+
     - name: Test with Rake
       run: |
         bundle exec rake test:all_with_coverage

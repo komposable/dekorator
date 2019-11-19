@@ -3,6 +3,7 @@
 require "dekorator/version"
 require "active_support/core_ext/object/blank"
 require "active_support/core_ext/module/delegation"
+require "delegate"
 
 module Dekorator
   class DecoratorNotFound < ArgumentError; end

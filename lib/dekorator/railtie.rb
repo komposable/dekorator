@@ -7,5 +7,9 @@ module Dekorator
     initializer "decorators.helper" do |_app|
       ActionView::Base.send :include, DecoratorsHelper
     end
+
+    config.after_initialize do |app|
+      app.config.paths.add "app/decorators", eager_load: true
+    end
   end
 end

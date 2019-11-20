@@ -1,6 +1,6 @@
 name: Tests
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
   test:
@@ -15,6 +15,9 @@ jobs:
           - { ruby: "2.4.x", rails: "5.1.x" }
           - { ruby: "2.5.x", rails: "5.1.x" }
           - { ruby: "2.6.x", rails: "5.1.x" }
+          - { ruby: "2.4.x", rails: "5.2.x" }
+          - { ruby: "2.5.x", rails: "5.2.x" }
+          - { ruby: "2.6.x", rails: "5.2.x" }
           - { ruby: "2.5.x", rails: "6.0.x" }
           - { ruby: "2.6.x", rails: "6.0.x" }
 

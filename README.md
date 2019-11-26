@@ -82,7 +82,7 @@ end
 In this example, `UserDecorator#posts` will be decorated.
 
 ```ruby
-decorated_user = decorator(User.first)
+decorated_user = decorate(User.first)
 decorated_user # => UserDecorator
 decorated_user.posts.first # => PostDecorator
 ```
@@ -94,9 +94,10 @@ specify the decorator class that should be used.
 
 ```ruby
 class AdminDecorator < ApplicationDecorator
+  ...
 end
 
-decorated_user = decorator(User.first, with: AdminDecorator)
+decorated_user = decorate(User.first, with: AdminDecorator)
 decorated_user # => AdminDecorator
 ```
 
@@ -112,7 +113,7 @@ end
 class ArticleDecorator < ApplicationDecorator
 end
 
-decorated_user = decorator(User.first)
+decorated_user = decorate(User.first)
 decorated_user # => UserDecorator
 decorated_user.posts.first # => ArticleDecorator
 ```

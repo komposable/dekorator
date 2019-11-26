@@ -11,18 +11,18 @@ RSpec.describe Dekorator::Base do
 
   describe "self#decorate" do
     context "with object" do
-      it { expect(ApplicationDecorator.decorate(post)).to be_a(PostDecorator) }
+      it { expect(Dekorator::Base.decorate(post)).to be_a(PostDecorator) }
       it { expect(PostDecorator.decorate(post)).to be_a(PostDecorator) }
     end
 
     context "with enumerable" do
-      it { expect(ApplicationDecorator.decorate([post, post, post])).to all(be_a(PostDecorator)) }
+      it { expect(Dekorator::Base.decorate([post, post, post])).to all(be_a(PostDecorator)) }
       it { expect(PostDecorator.decorate([post, post, post])).to all(be_a(PostDecorator)) }
       it { expect(PostDecorator.decorate([post, post, post])).to be_a(Enumerable) }
     end
 
     context "with sepcified decorator class" do
-      it { expect(ApplicationDecorator.decorate(post, with: AdvancedPostDecorator)).to be_a(AdvancedPostDecorator) }
+      it { expect(Dekorator::Base.decorate(post, with: AdvancedPostDecorator)).to be_a(AdvancedPostDecorator) }
       it { expect(PostDecorator.decorate(post, with: AdvancedPostDecorator)).to be_a(AdvancedPostDecorator) }
     end
 
@@ -33,7 +33,7 @@ RSpec.describe Dekorator::Base do
     context "with object without decorator" do
       let(:object) { ModelWithoutDecorator.new(name: "name") }
 
-      it { expect { ApplicationDecorator.decorate(object) }.to raise_error(Dekorator::DecoratorNotFound) }
+      it { expect { Dekorator::Base.decorate(object) }.to raise_error(Dekorator::DecoratorNotFound) }
     end
 
     context "with block" do
@@ -41,7 +41,7 @@ RSpec.describe Dekorator::Base do
     end
 
     context "with decorated object" do
-      it { expect(ApplicationDecorator.decorate(decorated_post)).to be_a(PostDecorator) }
+      it { expect(Dekorator::Base.decorate(decorated_post)).to be_a(PostDecorator) }
     end
   end
 

@@ -48,26 +48,50 @@ This command will generate the following file:
 
 ```ruby
 class UserDecorator < ApplicationDecorator
-  # include ActionView::Helpers::TextHelper
-  #
-  # decorates_association :posts
-  #
-  # def full_name
-  #   [first_name, last_name].join(" ")
-  # end
-  #
-  # def biography_summary
-  #   truncate(biography, length: 170)
-  # end
+  include ActionView::Helpers::TextHelper
+  
+  decorates_association :posts
+  
+  def full_name
+    [first_name, last_name].join(" ")
+  end
+  
+  def biography_summary
+    truncate(biography, length: 170)
+  end
 end
 ```
 
-In a view or a controller, simply do:
+### Decorate from a controller
 
 ```ruby
-@users = decorate(User.all)
-# or
-@user = decorate(User.find(params[:id]))
+class UsersController < ApplicationController
+  def index
+    @users = decorate User.all
+  end
+
+  def show
+    @user = decorate User.find(params[:id])
+  end
+end
+```
+
+### Decorate from a view
+
+```erb
+# app/views/users/index.html.erb
+
+<ul>
+  <% decorate(@users).each do |user| %>
+    <li><%= user.full_name %></li>
+  <% end %>
+</ul>
+```
+
+### Decorate outside a controller/view
+
+```ruby
+UserDecorate.decorate(User.first) # => UserDecorator
 ```
 
 ### Associations
@@ -95,7 +119,11 @@ decorated_user # => UserDecorator
 decorated_user.posts.first # => PostDecorator
 ```
 
-### Specify decorator
+### Custom decorator
+
+By default dekorator search the decorator class by adding `Decorator` at the end.  
+For `User`, dekorator looks for `UserDecorator` class. And so for `User::Profile`
+it looks for `User::ProfileDecorator`.
 
 If you want to create a specific decorator or sub-decorator, you can simply
 specify the decorator class that should be used.
@@ -113,7 +141,7 @@ You can also specify the decorator for associations:
 
 ```ruby
 class UserDecorator < ApplicationDecorator
-  decorates_association :posts, ArticleDecorator
+  decorates_association :posts, with: ArticleDecorator
 
   ...
 end
@@ -161,6 +189,26 @@ class UserDecorator < ApplicationDecorator
 
   def devise_scope
     __getobj__
+  end
+end
+```
+
+## Testing
+
+`rails generate decorator user` also generate a testing file based on your
+configuration.
+
+You can test a decorator the same way you do for helpers.
+
+### RSpec
+
+```ruby
+describe UserDecorator, type: :decorator do
+  let(:object) { User.new(first_name: "John", last_name: "Doe") }
+  let(:decorated_user) { described_class.new(object) }
+
+  describe "#full_name" do
+    it { expect(decorated_user.full_name).to eq("John Doe") }
   end
 end
 ```

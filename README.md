@@ -62,6 +62,14 @@ class UserDecorator < ApplicationDecorator
 end
 ```
 
+In a view or a controller, simply do:
+
+```ruby
+@users = decorate(User.all)
+# or
+@user = decorate(User.find(params[:id]))
+```
+
 ### Associations
 
 If you want to automatically decorate an association for a decorated object,

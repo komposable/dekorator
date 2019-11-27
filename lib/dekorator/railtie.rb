@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require "dekorator/decorators_helper"
+require "dekorator/rails/controller"
 
 module Dekorator
   class Railtie < Rails::Railtie
-    initializer "decorators.helper" do |_app|
-      ActionView::Base.send :include, DecoratorsHelper
+    config.to_prepare do |_app|
+      ActionController::Base.include Dekorator::Controller
     end
 
     config.after_initialize do |app|

@@ -39,12 +39,12 @@ module Dekorator
       # @option opts [Class] :with the decorator class to use. If empty a decorator will be guessed.
       #
       # @example Define an association to decorate
-      #   class UserDecorator < ApplicationDecorator
+      #   class UserDecorator < Dekorator::Base
       #     decorates_association :posts
       #   end
       #
       #   # A decorator could be precise
-      #   class UserDecorator < ApplicationDecorator
+      #   class UserDecorator < Dekorator::Base
       #     decorates_association :posts, PostDecorator
       #   end
       def decorates_association(relation_name, with: :__guess__)

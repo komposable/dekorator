@@ -10,19 +10,24 @@ RSpec.describe Dekorator::Base do
   let(:decorated_post_with_comments) { PostDecorator.new(post) }
 
   describe "self#decorate" do
+    context "with empty object" do
+      it { expect(described_class.decorate(nil)).to be_nil }
+      it { expect(described_class.decorate([])).to be_empty }
+    end
+
     context "with object" do
-      it { expect(Dekorator::Base.decorate(post)).to be_a(PostDecorator) }
+      it { expect(described_class.decorate(post)).to be_a(PostDecorator) }
       it { expect(PostDecorator.decorate(post)).to be_a(PostDecorator) }
     end
 
     context "with enumerable" do
-      it { expect(Dekorator::Base.decorate([post, post, post])).to all(be_a(PostDecorator)) }
+      it { expect(described_class.decorate([post, post, post])).to all(be_a(PostDecorator)) }
       it { expect(PostDecorator.decorate([post, post, post])).to all(be_a(PostDecorator)) }
       it { expect(PostDecorator.decorate([post, post, post])).to be_a(Enumerable) }
     end
 
     context "with sepcified decorator class" do
-      it { expect(Dekorator::Base.decorate(post, with: AdvancedPostDecorator)).to be_a(AdvancedPostDecorator) }
+      it { expect(described_class.decorate(post, with: AdvancedPostDecorator)).to be_a(AdvancedPostDecorator) }
       it { expect(PostDecorator.decorate(post, with: AdvancedPostDecorator)).to be_a(AdvancedPostDecorator) }
     end
 
@@ -33,7 +38,7 @@ RSpec.describe Dekorator::Base do
     context "with object without decorator" do
       let(:object) { ModelWithoutDecorator.new(name: "name") }
 
-      it { expect { Dekorator::Base.decorate(object) }.to raise_error(Dekorator::DecoratorNotFound) }
+      it { expect { described_class.decorate(object) }.to raise_error(Dekorator::DecoratorNotFound) }
     end
 
     context "with block" do
@@ -41,12 +46,17 @@ RSpec.describe Dekorator::Base do
     end
 
     context "with decorated object" do
-      it { expect(Dekorator::Base.decorate(decorated_post)).to be_a(PostDecorator) }
+      it { expect(described_class.decorate(decorated_post)).to be_a(PostDecorator) }
     end
   end
 
   describe "self#decorates_association" do
     it { expect(decorated_post_with_comments.comments).to all(be_a(CommentDecorator)) }
+  end
+
+  describe "self#base_class" do
+    it { expect(PostDecorator.base_class).to be(Post) }
+    it { expect(CommentDecorator.base_class).to be(Comment) }
   end
 
   describe "#object" do

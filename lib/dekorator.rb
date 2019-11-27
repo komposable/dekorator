@@ -67,7 +67,7 @@ module Dekorator
 
       def _decorate(object_or_enumerable, with: nil)
         if defined?(ActiveRecord::Relation) && object_or_enumerable.is_a?(ActiveRecord::Relation)
-          DecoratedEnumerableProxy.new(object_or_enumerable, with)
+          Dekorator::DecoratedEnumerableProxy.new(object_or_enumerable, with)
         elsif object_or_enumerable.is_a? Enumerable
           object_or_enumerable.map { |object| with.new(object) }
         else

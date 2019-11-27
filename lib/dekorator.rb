@@ -78,11 +78,9 @@ module Dekorator
 
       def _guess_decorator(object_or_enumerable)
         object_or_enumerable = object_or_enumerable.first if object_or_enumerable.is_a? Enumerable
-        klass = _safe_constantize("#{object_or_enumerable.class}Decorator")
 
-        raise DecoratorNotFound, "Can't guess decorator for #{object_or_enumerable.class.name} object" if klass.nil?
-
-        klass
+        _safe_constantize("#{object_or_enumerable.class}Decorator") \
+          || raise(DecoratorNotFound, "Can't guess decorator for #{object_or_enumerable.class.name} object")
       end
 
       def decorable_object?(object_or_collection)

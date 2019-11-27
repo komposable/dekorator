@@ -6,6 +6,7 @@ module Dekorator
   class Railtie < Rails::Railtie
     initializer "decorators.helper" do |_app|
       ActionView::Base.send :include, DecoratorsHelper
+      ActionController::Base.send :include, DecoratorsHelper
     end
 
     config.after_initialize do |app|

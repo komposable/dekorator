@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 - Avoid deep decoration ([#25](https://github.com/komposable/dekorator/pull/25))
+- Make `decorate` accessible in ApplicationController ([#29](https://github.com/komposable/dekorator/pull/29))
 
 ### Changed
 - Moved to Komposable organization ([#13](https://github.com/komposable/dekorator/pull/13))

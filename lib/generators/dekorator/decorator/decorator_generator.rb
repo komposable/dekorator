@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
+require "rails/generators"
+
 module Dekorator
   module Generators
-    class DecoratorGenerator < Rails::Generators::NamedBase
+    class DecoratorGenerator < ::Rails::Generators::NamedBase
       source_root File.expand_path("templates", __dir__)
 
       def create_decorator

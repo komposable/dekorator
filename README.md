@@ -42,7 +42,7 @@ This command will create an `ApplicationDecorator` file.
 
 Generate a new decorator with the `decorator` generator:
 
-    $ rails generate dekorator:decorator user
+    $ rails generate decorator user
 
 This command will generate the following file:
 

@@ -1,12 +1,17 @@
 # frozen_string_literal: true
 
+require "rails/generators"
+
 module Dekorator
   module Generators
-    class InstallGenerator < Rails::Generators::Base
+    class InstallGenerator < ::Rails::Generators::Base
 
       def create_root_directory
         empty_directory(dekorator_root_directory)
-        empty_directory_with_keep_file(dekorator_root_directory.join("concerns"))
+
+        concerns_directory = dekorator_root_directory.join("concerns")
+        empty_directory(concerns_directory)
+        create_file("#{concerns_directory}/.keep")
       end
 
       def create_application_decorator

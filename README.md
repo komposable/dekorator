@@ -122,7 +122,7 @@ decorated_user.posts.first # => PostDecorator
 ### Custom decorator
 
 By default dekorator search the decorator class by adding `Decorator` at the end.  
-For `User`, dekorator looks for `UserDecorator` class. And so for `User::Profile`
+For `User`, Dekorator looks for the `UserDecorator` class, and for `User::Profile`
 it looks for `User::ProfileDecorator`.
 
 If you want to create a specific decorator or sub-decorator, you can simply

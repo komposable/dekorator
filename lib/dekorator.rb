@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
 require "dekorator/version"
-require "active_support/core_ext/object/blank"
-require "active_support/core_ext/module/delegation"
 require "delegate"
 
+# :nodoc
 module Dekorator
   class DecoratorNotFound < ArgumentError; end
 
@@ -22,9 +21,8 @@ module Dekorator
       def decorate(object_or_collection, with: nil)
         return object_or_collection if decorable_object?(object_or_collection)
 
-        with = _guess_decorator(object_or_collection) if with.nil? && object_or_collection.present?
-
-        raise DecoratorNotFound, "Can't guess decorator for #{object_or_collection.class.name} object" if with.nil?
+        with ||= self if with != :__guess__ && self != Dekorator::Base
+        with = _guess_decorator(object_or_collection) if with.nil? || with == :__guess__
 
         object_or_collection = _decorate(object_or_collection, with: with)
 
@@ -41,67 +39,87 @@ module Dekorator
       # @option opts [Class] :with the decorator class to use. If empty a decorator will be guessed.
       #
       # @example Define an association to decorate
-      #   class UserDecorator < ApplicationDecorator
+      #   class UserDecorator < Dekorator::Base
       #     decorates_association :posts
       #   end
       #
       #   # A decorator could be precise
-      #   class UserDecorator < ApplicationDecorator
+      #   class UserDecorator < Dekorator::Base
       #     decorates_association :posts, PostDecorator
       #   end
-      def decorates_association(relation_name, with: nil)
+      def decorates_association(relation_name, with: :__guess__)
         relation_name = relation_name.to_sym
 
         define_method(relation_name) do
-          association = __getobj__.public_send(relation_name)
-
-          @decorated_associations[relation_name] ||= decorate(association, with: with)
+          @decorated_associations[relation_name] ||= decorate(__getobj__.public_send(relation_name), with: with)
         end
       end
 
+      # Guess and returns the decorated object class.
+      #
+      # @return [Class] the decorated object class.
       def base_class
-        name.gsub("Decorator", "").safe_constantize
+        _safe_constantize(name.gsub("Decorator", ""))
       end
 
       private
 
-      def _decorate(object_or_enumerable, with: nil)
-        if defined?(ActiveRecord::Relation) && object_or_enumerable.is_a?(ActiveRecord::Relation)
-          Dekorator::DecoratedEnumerableProxy.new(object_or_enumerable, with)
-        elsif object_or_enumerable.is_a? Enumerable
-          object_or_enumerable.map { |object| with.new(object) }
-        else
+      def _decorate(object_or_enumerable, with:)
+        if !object_or_enumerable.is_a? Enumerable
           with.new(object_or_enumerable)
+        else
+          if defined?(ActiveRecord::Relation) && object_or_enumerable.is_a?(ActiveRecord::Relation)
+            Dekorator::DecoratedEnumerableProxy.new(with, object_or_enumerable)
+          else object_or_enumerable.is_a? Enumerable
+            object_or_enumerable.map { |object| _decorate(object, with: with) }
+          end
         end
       end
 
       def _guess_decorator(object_or_enumerable)
         object_or_enumerable = object_or_enumerable.first if object_or_enumerable.is_a? Enumerable
 
-        "#{object_or_enumerable.class}Decorator".safe_constantize if object_or_enumerable.present?
+        _safe_constantize("#{object_or_enumerable.class}Decorator") \
+          || raise(DecoratorNotFound, "Can't guess decorator for #{object_or_enumerable.class.name} object")
       end
 
       def decorable_object?(object_or_collection)
-        object_or_collection.blank? \
+        (object_or_collection.respond_to?(:empty?) && object_or_collection.empty?) \
+          || !object_or_collection \
           || object_or_collection.is_a?(Dekorator::Base) \
           || (defined?(ActiveRecord::Relation) && object_or_collection.is_a?(Dekorator::DecoratedEnumerableProxy))
       end
+
+      def _safe_constantize(class_name)
+        Object.const_get(class_name)
+      rescue NameError => _e
+        nil
+      end
     end
 
-    delegate :decorate, to: :class
-
+    # :nodoc
     def initialize(object)
       @decorated_associations = {}
 
       super(object)
     end
 
+    # :nodoc
+    def decorate(object_or_collection, with: :__guess__)
+      self.class.decorate(object_or_collection, with: with)
+    end
+
+    # Returns the decorated object.
+    #
+    # @return [Object] the decorated object.
     def object
       __getobj__
     end
   end
 
   if defined?(ActiveRecord::Relation)
+    # DecoratedEnumerableProxy is strongly inspired from
+    # https://github.com/kiote/activeadmin-poro-decorator/blob/master/lib/activeadmin-poro-decorator.rb#L65
     class DecoratedEnumerableProxy < DelegateClass(ActiveRecord::Relation)
       include Enumerable
 
@@ -109,7 +127,7 @@ module Dekorator
                :first, :last, :shift, to: :decorated_collection
       delegate :each, to: :to_ary
 
-      def initialize(collection, decorator_class)
+      def initialize(decorator_class, collection)
         super(collection)
 
         @decorator_class = decorator_class
@@ -120,7 +138,7 @@ module Dekorator
       end
 
       def decorated_collection
-        @decorated_collection ||= wrapped_collection.collect { |member| @decorator_class.decorate(member) }
+        @decorated_collection ||= wrapped_collection.collect { |member| @decorator_class.new(member) }
       end
       alias to_ary decorated_collection
     end

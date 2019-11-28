@@ -54,7 +54,7 @@ Naming/VariableName:
 Lint/DeprecatedClassMethods:
   Enabled: true
 
-Layout/AlignParameters:
+Layout/ParameterAlignment:
   Enabled: true
 
 Layout/BlockAlignment:

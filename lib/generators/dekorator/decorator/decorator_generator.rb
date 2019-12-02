@@ -2,14 +2,16 @@
 
 require "rails/generators"
 
-module TestUnit
+module Dekorator
   module Generators
     class DecoratorGenerator < ::Rails::Generators::NamedBase
       source_root File.expand_path("templates", __dir__)
 
-      def create_decorator_test
-        template "decorator_test.rb", File.join("test/decorators", class_path, "#{file_name}_decorator_test.rb")
+      def create_decorator
+        template "decorator.rb", File.join("app/decorators", class_path, "#{file_name}_decorator.rb")
       end
+
+      hook_for :test_framework
     end
   end
 end

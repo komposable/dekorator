@@ -2,7 +2,7 @@ Description:
   Generate a fresh new decorator
 
 Example:
-    `rails generate decorator User`
+    `rails generate dekorator:decorator User`
 
     User decorator.
         Decorator: app/decorators/user_decorator.rb

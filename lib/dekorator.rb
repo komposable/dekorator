@@ -5,6 +5,9 @@ require "delegate"
 
 # :nodoc
 module Dekorator
+  # @api private
+  module Generators; end
+
   class DecoratorNotFound < ArgumentError; end
 
   # Base decorator.

@@ -195,7 +195,7 @@ end
 
 ## Testing
 
-`rails generate decorator user` also generate a testing file based on your
+`rails generate decorator user` also generates a testing file based on your
 configuration.
 
 You can test a decorator the same way you do for helpers.

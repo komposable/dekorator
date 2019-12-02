@@ -121,7 +121,7 @@ decorated_user.posts.first # => PostDecorator
 
 ### Custom decorator
 
-By default dekorator search the decorator class by adding `Decorator` at the end.  
+By default, Dekorator searches for the decorator class by adding `Decorator` at the end.  
 For `User`, Dekorator looks for the `UserDecorator` class, and for `User::Profile`
 it looks for `User::ProfileDecorator`.
 

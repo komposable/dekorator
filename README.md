@@ -9,8 +9,6 @@
 
 **Dekorator** is a lightweight library to implement _presenters_ and/or _decorators_ in your Rails app. It has less features than [`draper`](https://github.com/drapergem/draper) and aims at having a lower memory footprint.
 
-**Not production ready yet**
-
 This gem has been inspired by our Rails development practices at [Pantographe](https://pantographe.studio), and the [Ruby memory, ActiveRecord and Draper](https://medium.com/appaloosa-store-engineering/ruby-memory-activerecord-and-draper-64f06abeeb34) talk by [Benoit Tigeot](https://github.com/benoittgt).
 
 ## Compatibility

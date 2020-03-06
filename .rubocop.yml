@@ -12,10 +12,6 @@ Gemspec/OrderedDependencies:
 Style/BlockDelimiters:
   Enabled: true
 
-Style/BracesAroundHashParameters:
-  Enabled: true
-  EnforcedStyle: no_braces
-
 Style/Dir:
   Enabled: true
 

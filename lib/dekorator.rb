@@ -71,11 +71,7 @@ module Dekorator
         if !object_or_enumerable.is_a? Enumerable
           with.new(object_or_enumerable)
         else
-          if defined?(ActiveRecord::Relation) && object_or_enumerable.is_a?(ActiveRecord::Relation)
-            Dekorator::DecoratedEnumerableProxy.new(with, object_or_enumerable)
-          else object_or_enumerable.is_a? Enumerable
-            object_or_enumerable.map { |object| _decorate(object, with: with) }
-          end
+          object_or_enumerable.lazy.map { |object| _decorate(object, with: with) }
         end
       end
 
@@ -90,7 +86,6 @@ module Dekorator
         (object_or_collection.respond_to?(:empty?) && object_or_collection.empty?) \
           || !object_or_collection \
           || object_or_collection.is_a?(Dekorator::Base) \
-          || (defined?(ActiveRecord::Relation) && object_or_collection.is_a?(Dekorator::DecoratedEnumerableProxy))
       end
 
       def _safe_constantize(class_name)
@@ -117,33 +112,6 @@ module Dekorator
     # @return [Object] the decorated object.
     def object
       __getobj__
-    end
-  end
-
-  if defined?(ActiveRecord::Relation)
-    # DecoratedEnumerableProxy is strongly inspired from
-    # https://github.com/kiote/activeadmin-poro-decorator/blob/master/lib/activeadmin-poro-decorator.rb#L65
-    class DecoratedEnumerableProxy < DelegateClass(ActiveRecord::Relation)
-      include Enumerable
-
-      delegate :as_json, :collect, :map, :each, :[], :all?, :include?,
-               :first, :last, :shift, to: :decorated_collection
-      delegate :each, to: :to_ary
-
-      def initialize(decorator_class, collection)
-        super(collection)
-
-        @decorator_class = decorator_class
-      end
-
-      def wrapped_collection
-        __getobj__
-      end
-
-      def decorated_collection
-        @decorated_collection ||= wrapped_collection.collect { |member| @decorator_class.new(member) }
-      end
-      alias to_ary decorated_collection
     end
   end
 end

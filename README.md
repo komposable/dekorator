@@ -156,7 +156,8 @@ decorated_user.posts.first # => ArticleDecorator
 
 ### ActiveAdmin
 
-This gem is compatible with [`activeadmin`][activeadmin] ([2.8+](https://github.com/activeadmin/activeadmin/pull/6249)).
+This gem is compatible with [`activeadmin`][activeadmin] ([2.8+](https://github.com/activeadmin/activeadmin/pull/6249)).  
+For `activeadmin` before `2.8`, use `dekorator` `1.0.*`.
 
 Simply use `#decorate_with`
 

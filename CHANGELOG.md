@@ -6,8 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- Ruby 2.7 support ([#37](https://github.com/komposable/dekorator/pull/37))
 ### Removed
 - Remove `DecoratedEnumerableProxy` ([#36](https://github.com/komposable/dekorator/pull/36))
+- Drop Ruby 2.4 support ([#37](https://github.com/komposable/dekorator/pull/37))
 
 ## [1.0.0] - 2019-12-02
 ### Added

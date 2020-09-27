@@ -9,17 +9,18 @@ jobs:
     strategy:
       matrix:
         versions:
-          - { ruby: "2.4.x", rails: "5.0.x" }
           - { ruby: "2.5.x", rails: "5.0.x" }
           - { ruby: "2.6.x", rails: "5.0.x" }
-          - { ruby: "2.4.x", rails: "5.1.x" }
+          - { ruby: "2.7.x", rails: "5.0.x" }
           - { ruby: "2.5.x", rails: "5.1.x" }
           - { ruby: "2.6.x", rails: "5.1.x" }
-          - { ruby: "2.4.x", rails: "5.2.x" }
+          - { ruby: "2.7.x", rails: "5.1.x" }
           - { ruby: "2.5.x", rails: "5.2.x" }
           - { ruby: "2.6.x", rails: "5.2.x" }
+          - { ruby: "2.7.x", rails: "5.2.x" }
           - { ruby: "2.5.x", rails: "6.0.x" }
           - { ruby: "2.6.x", rails: "6.0.x" }
+          - { ruby: "2.7.x", rails: "6.0.x" }
 
     steps:
     - uses: actions/checkout@v1

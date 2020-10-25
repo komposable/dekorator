@@ -96,8 +96,8 @@ end
 
 # Benchmark
 SCENARIOS = {
-  "#summary"        => :summary,
-  "#comments"       => :comments,
+  "#summary"  => :summary,
+  "#comments" => :comments,
 }
 
 SCENARIOS.each_pair do |name, method|

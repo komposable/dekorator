@@ -10,8 +10,8 @@ module Dekorator
       helper_method :decorate
     end
 
-    def decorate(object_or_collection, with: nil)
-      Dekorator::Base.decorate(object_or_collection, with: with)
+    def decorate(object_or_enumerable, with: nil)
+      Dekorator::Base.decorate(object_or_enumerable, with: with)
     end
   end
 end

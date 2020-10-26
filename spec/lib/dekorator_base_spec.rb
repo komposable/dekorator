@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-#
+
 require File.expand_path("../fixtures/models.rb", __dir__)
 require File.expand_path("../fixtures/decorators.rb", __dir__)
 
@@ -29,10 +29,6 @@ RSpec.describe Dekorator::Base do
     context "with sepcified decorator class" do
       it { expect(described_class.decorate(post, with: AdvancedPostDecorator)).to be_a(AdvancedPostDecorator) }
       it { expect(PostDecorator.decorate(post, with: AdvancedPostDecorator)).to be_a(AdvancedPostDecorator) }
-    end
-
-    context "with ActiveRecord::Relation" do
-      pending
     end
 
     context "with object without decorator" do

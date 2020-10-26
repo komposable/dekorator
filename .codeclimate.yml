@@ -1,0 +1,4 @@
+exclude_patterns:
+- "benchmarks/**/*"
+- "lib/generators/**/*"
+- "spec/**/*"

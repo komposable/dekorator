@@ -8,6 +8,7 @@ module Dekorator
   # @api private
   module Generators; end
 
+  # :nodoc:
   class DecoratorNotFound < ArgumentError; end
 
   # Base decorator.
@@ -15,31 +16,31 @@ module Dekorator
     class << self
       # Decorate an object with a decorator.
       #
-      # @param object_or_collection [Object, Enumerable] the object or collection to decorate.
-      # @option opts [Class] :with the decorator class to use. If empty a decorator will be guessed.
+      # @param object_or_enumerable [Object, Enumerable] the object or Enumerable to decorate.
+      # @param with [Class] the decorator class to use. If empty a decorator will be guessed.
       #
-      # @return [Dekorator::Base, ActiveRecord::Relation, Enumerable] the obect or collection decorated.
+      # @return [Dekorator::Base] if object given.
+      # @return [Enumerable] if Enumerable given.
       #
       # @raise [DecoratorNotFound] if decorator is not found.
-      def decorate(object_or_collection, with: nil)
-        return object_or_collection if decorable_object?(object_or_collection)
+      def decorate(object_or_enumerable, with: nil)
+        return object_or_enumerable unless decorable?(object_or_enumerable)
 
-        with ||= self if with != :__guess__ && self != Dekorator::Base
-        with = _guess_decorator(object_or_collection) if with.nil? || with == :__guess__
+        with ||= _decorator_class
 
-        object_or_collection = _decorate(object_or_collection, with: with)
+        object_or_enumerable = _decorate(object_or_enumerable, with: with)
 
         if block_given?
-          yield object_or_collection
+          yield object_or_enumerable
         else
-          object_or_collection
+          object_or_enumerable
         end
       end
 
       # Define that an association must be decorated.
       #
       # @param relation_name [String, Symbol] the association name to decorate.
-      # @option opts [Class] :with the decorator class to use. If empty a decorator will be guessed.
+      # @param with [Class] the decorator class to use. If empty a decorator will be guessed.
       #
       # @example Define an association to decorate
       #   class UserDecorator < Dekorator::Base
@@ -54,7 +55,7 @@ module Dekorator
         relation_name = relation_name.to_sym
 
         define_method(relation_name) do
-          @decorated_associations[relation_name] ||= decorate(__getobj__.public_send(relation_name), with: with)
+          @_decorated_associations[relation_name] ||= decorate(__getobj__.public_send(relation_name), with: with)
         end
       end
 
@@ -62,49 +63,74 @@ module Dekorator
       #
       # @return [Class] the decorated object class.
       def base_class
-        _safe_constantize(name.gsub("Decorator", ""))
+        _safe_constantize(name.sub("Decorator", ""))
       end
 
       private
 
-      def _decorate(object_or_enumerable, with:)
-        if !object_or_enumerable.is_a? Enumerable
-          with.new(object_or_enumerable)
-        else
+      # @api private
+      def _decorate(object_or_enumerable, with: nil)
+        with = _guess_decorator(object_or_enumerable) if with.nil? || with == :__guess__
+
+        if object_or_enumerable.is_a? Enumerable
           object_or_enumerable.lazy.map { |object| _decorate(object, with: with) }
+        else
+          with.new(object_or_enumerable)
         end
       end
 
+      # @api private
       def _guess_decorator(object_or_enumerable)
         object_or_enumerable = object_or_enumerable.first if object_or_enumerable.is_a? Enumerable
 
         _safe_constantize("#{object_or_enumerable.class}Decorator") \
-          || raise(DecoratorNotFound, "Can't guess decorator for #{object_or_enumerable.class.name} object")
+          || raise(DecoratorNotFound, "Can't guess decorator for #{object_or_enumerable.class} object")
       end
 
-      def decorable_object?(object_or_collection)
-        (object_or_collection.respond_to?(:empty?) && object_or_collection.empty?) \
-          || !object_or_collection \
-          || object_or_collection.is_a?(Dekorator::Base) \
+      # @api private
+      def decorable?(object_or_enumerable)
+        return false if object_or_enumerable.respond_to?(:empty?) && object_or_enumerable.empty?
+        return false if !object_or_enumerable
+        return false if object_or_enumerable.is_a?(Dekorator::Base)
+
+        true
       end
 
+      # @api private
       def _safe_constantize(class_name)
         Object.const_get(class_name)
-      rescue NameError => _e
+      rescue NameError => _
         nil
+      end
+
+      # @api private
+      def _decorator_class
+        return nil if self == Dekorator::Base
+
+        self
       end
     end
 
-    # :nodoc
+    # Decorate an object
+    #
+    # @param object [Object] object to decorate.
     def initialize(object)
-      @decorated_associations = {}
+      @_decorated_associations = {}
 
       super(object)
     end
 
-    # :nodoc
-    def decorate(object_or_collection, with: :__guess__)
-      self.class.decorate(object_or_collection, with: with)
+    # Decorate an object with a decorator.
+    #
+    # @param object_or_enumerable [Object, Enumerable] the object or Enumerable to decorate.
+    # @param with [Class] the decorator class to use. If empty a decorator will be guessed.
+    #
+    # @return [Dekorator::Base] if object given.
+    # @return [Enumerable] if Enumerable given.
+    #
+    # @raise [DecoratorNotFound] if decorator is not found.c
+    def decorate(object_or_enumerable, with: :__guess__)
+      self.class.decorate(object_or_enumerable, with: with)
     end
 
     # Returns the decorated object.

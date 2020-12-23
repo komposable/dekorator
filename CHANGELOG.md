@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+Nothing yet
+
+## [1.1.0] - 2020-12-23
 ### Added
 - Ruby 2.7 support ([#37](https://github.com/komposable/dekorator/pull/37))
 - List decorators in Rails stats task ([#38](https://github.com/komposable/dekorator/pull/38))
@@ -37,5 +40,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Create `dekorator:install` generator ([a2a36d66](https://github.com/komposable/dekorator/commit/a2a36d66c6de6cb0a00f783794cd29f899bc04b6))
 - Create `decorator` generator ([a2a36d66](https://github.com/komposable/dekorator/commit/a2a36d66c6de6cb0a00f783794cd29f899bc04b6))
 
-[Unreleased]: https://github.com/komposable/dekorator/compare/v1.0.0...master
-[1.0.0]: https://github.com/komposable/dekorator/compare/v1.0.0...1.0.0.pre.1
+[Unreleased]: https://github.com/komposable/dekorator/compare/v1.1.0...master
+[1.1.0]: https://github.com/komposable/dekorator/compare/v1.0.0...v1.1.0
+[1.0.0]: https://github.com/komposable/dekorator/compare/v1.0.0.pre.1...v1.0.0

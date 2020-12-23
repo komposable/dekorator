@@ -5,6 +5,7 @@ AllCops:
     - lib/generators/**/templates/**/*
     - gemfiles/**/*
     - tmp/**/*
+    - vendor/**/*
 
 Gemspec/OrderedDependencies:
   Enabled: true

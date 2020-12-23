@@ -8,9 +8,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 - Ruby 2.7 support ([#37](https://github.com/komposable/dekorator/pull/37))
+- List decorators in Rails stats task ([#38](https://github.com/komposable/dekorator/pull/38))
+- Add Rails 6.1 support and drop Rails 5.0 and 5.1 support ([#41](https://github.com/komposable/dekorator/pull/41))
+### Changed
+- Refactorisation ([#39](https://github.com/komposable/dekorator/pull/39))
 ### Removed
 - Remove `DecoratedEnumerableProxy` ([#36](https://github.com/komposable/dekorator/pull/36))
 - Drop Ruby 2.4 support ([#37](https://github.com/komposable/dekorator/pull/37))
+- Drop Rails 5.0 and 5.1 support ([#41](https://github.com/komposable/dekorator/pull/41))
 
 ## [1.0.0] - 2019-12-02
 ### Added

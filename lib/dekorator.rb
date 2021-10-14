@@ -73,7 +73,7 @@ module Dekorator
         with = _guess_decorator(object_or_enumerable) if with.nil? || with == :__guess__
 
         if object_or_enumerable.is_a? Enumerable
-          object_or_enumerable.lazy.map { |object| _decorate(object, with: with) }
+          object_or_enumerable.map { |object| _decorate(object, with: with) }
         else
           with.new(object_or_enumerable)
         end

@@ -13,6 +13,8 @@ RSpec.describe Dekorator::Base do
     context "with empty object" do
       it { expect(described_class.decorate(nil)).to be_nil }
       it { expect(described_class.decorate([])).to be_empty }
+      it { expect(described_class.decorate("")).to be_empty }
+      # it { expect(described_class.decorate([""])).to be_empty }
     end
 
     context "with object" do

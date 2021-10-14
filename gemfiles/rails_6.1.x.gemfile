@@ -9,7 +9,7 @@ gem "actionview"
 gem "railties"
 gem "appraisal", require: false
 gem "rubocop", require: false
-gem "rails", "~> 6.1"
+gem "rails", "~> 6.1.0"
 
 group :test do
   gem "simplecov", require: false

@@ -20,32 +20,20 @@ jobs:
           - { ruby: "2.6", rails: "6.1.x" }
           - { ruby: "2.7", rails: "6.1.x" }
           - { ruby: "3.0", rails: "6.1.x" }
+          - { ruby: "2.7", rails: "head" }
+          - { ruby: "3.0", rails: "head" }
 
+
+    env:
+      BUNDLE_GEMFILE: gemfiles/rails_${{ matrix.versions.rails }}.gemfile
     steps:
-    - uses: actions/checkout@v1
-
-    - uses: actions/cache@v1
-      id: cache
-      with:
-        path: gemfiles/vendor/bundle
-        key: ruby-${{ matrix.versions.ruby }}-rails-${{ matrix.versions.rails }}
+    - uses: actions/checkout@v2
 
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.versions.ruby }}
         bundler-cache: true
-
-    - name: Set up bundler
-      run: |
-        echo 'gem: --no-document' >> ~/.gemrc
-        gem install bundler
-        bundle config --global gemfile gemfiles/rails_${{ matrix.versions.rails }}.gemfile
-        bundle config --global path vendor/bundle
-
-    - name: Install gems
-      run: |
-        bundle install --jobs $(nproc) --retry 3
 
     - name: Test with Rake
       run: |

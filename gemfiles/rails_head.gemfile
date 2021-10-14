@@ -9,7 +9,7 @@ gem "actionview"
 gem "railties"
 gem "appraisal", require: false
 gem "rubocop", require: false
-gem "rails", "~> 5.2.0"
+gem "rails", branch: "main", git: "https://github.com/rails/rails"
 
 group :test do
   gem "simplecov", require: false

@@ -89,6 +89,10 @@ module Dekorator
 
       # @api private
       def decorable?(object_or_enumerable)
+        return false if defined?(ActiveRecord::Relation) \
+          && object_or_enumerable.is_a?(ActiveRecord::Relation) \
+          && object_or_enumerable.blank?
+
         return false if object_or_enumerable.respond_to?(:empty?) && object_or_enumerable.empty?
         return false if !object_or_enumerable
         return false if object_or_enumerable.is_a?(Dekorator::Base)

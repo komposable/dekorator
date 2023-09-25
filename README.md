@@ -13,8 +13,8 @@ This gem has been inspired by our Rails development practices at [Pantographe](h
 
 ## Compatibility
 
-* Ruby 2.5+
-* Rails 5.2+
+* Ruby 2.7+
+* Rails 6.0+
 
 ## Installation
 

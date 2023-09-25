@@ -6,7 +6,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-Nothing yet
+## Removed
+- Add Rails 7.0 on CI tests via Appraisals
+- Drop Ruby 2.5 and 2.6 support
 
 ## [1.2.1] - 2021-10-14
 - Make decorated `Enumerable` not lazy anymore ([#46](https://github.com/komposable/dekorator/pull/46))

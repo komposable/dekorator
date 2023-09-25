@@ -4,8 +4,8 @@
 [![Gem Version](https://badge.fury.io/rb/dekorator.svg)](https://rubygems.org/gems/dekorator)
 [![Maintainability](https://api.codeclimate.com/v1/badges/f7ab08512ead00da34c0/maintainability)](https://codeclimate.com/github/komposable/dekorator/maintainability)
 [![Coverage Status](https://coveralls.io/repos/github/komposable/dekorator/badge.svg)](https://coveralls.io/github/komposable/dekorator)
-[![Inch CI](https://inch-ci.org/github/komposable/dekorator.svg?branch=master)](https://inch-ci.org/github/komposable/dekorator)
-[![Yardoc](https://img.shields.io/badge/doc-yardoc-blue.svg)](https://www.rubydoc.info/github/komposable/dekorator/master)
+[![Inch CI](https://inch-ci.org/github/komposable/dekorator.svg?branch=main)](https://inch-ci.org/github/komposable/dekorator)
+[![Yardoc](https://img.shields.io/badge/doc-yardoc-blue.svg)](https://www.rubydoc.info/github/komposable/dekorator/main)
 
 **Dekorator** is a lightweight library to implement _presenters_ and/or _decorators_ in your Rails app. It has less features than [`draper`](https://github.com/drapergem/draper) and aims at having a lower memory footprint.
 
@@ -243,4 +243,4 @@ chat rooms and mailing lists is expected to follow the [code of conduct].
 [devise]: https://github.com/plataformatec/devise/
 [rubygems.org]: https://rubygems.org
 [MIT License]: https://opensource.org/licenses/MIT
-[code of conduct]: https://github.com/komposable/dekorator/blob/master/CODE_OF_CONDUCT.md
+[code of conduct]: https://github.com/komposable/dekorator/blob/main/CODE_OF_CONDUCT.md

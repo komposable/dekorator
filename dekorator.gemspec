@@ -16,8 +16,8 @@ Gem::Specification.new do |spec|
   spec.license     = "MIT"
 
   spec.metadata    = {
-    "homepage_uri"    => "https://github.com/komposable/dekorator",
-    "changelog_uri"   => "https://github.com/komposable/dekorator/blob/master/CHANGELOG.md",
+    "homepage_uri" => spec.homepage,
+    "changelog_uri"   => "https://github.com/komposable/dekorator/blob/main/CHANGELOG.md",
     "source_code_uri" => "https://github.com/komposable/dekorator",
     "bug_tracker_uri" => "https://github.com/komposable/dekorator/issues",
 }

@@ -49,7 +49,7 @@ Nothing yet
 - Create `dekorator:install` generator ([a2a36d66](https://github.com/komposable/dekorator/commit/a2a36d66c6de6cb0a00f783794cd29f899bc04b6))
 - Create `decorator` generator ([a2a36d66](https://github.com/komposable/dekorator/commit/a2a36d66c6de6cb0a00f783794cd29f899bc04b6))
 
-[Unreleased]: https://github.com/komposable/dekorator/compare/v1.2.1...master
+[Unreleased]: https://github.com/komposable/dekorator/compare/v1.2.1...main
 [1.2.1]: https://github.com/komposable/dekorator/compare/v1.2.0...v1.2.1
 [1.2.0]: https://github.com/komposable/dekorator/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/komposable/dekorator/compare/v1.0.0...v1.1.0

@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+- Add Rails 7.1 support ([#49](https://github.com/komposable/dekorator/pull/49))
+
 ## Removed
 - Add Rails 7.0 on CI tests via Appraisals ([#47](https://github.com/komposable/dekorator/pull/47))
 - Drop Ruby 2.5 and 2.6 support ([#47](https://github.com/komposable/dekorator/pull/47))

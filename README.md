@@ -3,7 +3,6 @@
 [![Tests](https://github.com/komposable/dekorator/workflows/Tests/badge.svg)](https://github.com/komposable/dekorator/actions)
 [![Gem Version](https://badge.fury.io/rb/dekorator.svg)](https://rubygems.org/gems/dekorator)
 [![Maintainability](https://api.codeclimate.com/v1/badges/f7ab08512ead00da34c0/maintainability)](https://codeclimate.com/github/komposable/dekorator/maintainability)
-[![Coverage Status](https://coveralls.io/repos/github/komposable/dekorator/badge.svg)](https://coveralls.io/github/komposable/dekorator)
 [![Inch CI](https://inch-ci.org/github/komposable/dekorator.svg?branch=main)](https://inch-ci.org/github/komposable/dekorator)
 [![Yardoc](https://img.shields.io/badge/doc-yardoc-blue.svg)](https://www.rubydoc.info/github/komposable/dekorator/main)
 
@@ -13,8 +12,8 @@ This gem has been inspired by our Rails development practices at [Pantographe](h
 
 ## Compatibility
 
-* Ruby 2.5+
-* Rails 5.2+
+* Ruby 2.7+
+* Rails 6.0+
 
 ## Installation
 
@@ -47,13 +46,13 @@ This command will generate the following file:
 ```ruby
 class UserDecorator < ApplicationDecorator
   include ActionView::Helpers::TextHelper
-  
+
   decorates_association :posts
-  
+
   def full_name
     [first_name, last_name].join(" ")
   end
-  
+
   def biography_summary
     truncate(biography, length: 170)
   end
@@ -119,7 +118,7 @@ decorated_user.posts.first # => PostDecorator
 
 ### Custom decorator
 
-By default, Dekorator searches for the decorator class by adding `Decorator` at the end.  
+By default, Dekorator searches for the decorator class by adding `Decorator` at the end.
 For `User`, Dekorator looks for the `UserDecorator` class, and for `User::Profile`
 it looks for `User::ProfileDecorator`.
 
@@ -156,7 +155,7 @@ decorated_user.posts.first # => ArticleDecorator
 
 ### ActiveAdmin
 
-This gem is compatible with [`activeadmin`][activeadmin] ([2.8+](https://github.com/activeadmin/activeadmin/pull/6249)).  
+This gem is compatible with [`activeadmin`][activeadmin] ([2.8+](https://github.com/activeadmin/activeadmin/pull/6249)).
 For `activeadmin` before `2.8`, use `dekorator` `1.0.*`.
 
 Simply use `#decorate_with`

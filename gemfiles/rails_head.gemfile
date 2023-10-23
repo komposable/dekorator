@@ -2,17 +2,13 @@
 
 source "https://rubygems.org"
 
-gem "activerecord"
-gem "activemodel"
-gem "activesupport"
-gem "actionview"
-gem "railties"
+gem "rails", branch: "main", git: "https://github.com/rails/rails"
 gem "appraisal", require: false
 gem "rubocop", require: false
-gem "rails", branch: "main", git: "https://github.com/rails/rails"
-
-group :test do
-  gem "simplecov", require: false
-end
+gem "rubocop-performance", require: false
+gem "rubocop-rspec", require: false
+gem "rspec", require: false
+gem "rspec-rails", require: false
+gem "simplecov", require: false
 
 gemspec path: "../"

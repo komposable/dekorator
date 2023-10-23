@@ -7,8 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ## Removed
-- Add Rails 7.0 on CI tests via Appraisals
-- Drop Ruby 2.5 and 2.6 support
+- Add Rails 7.0 on CI tests via Appraisals ([#47](https://github.com/komposable/dekorator/pull/47))
+- Drop Ruby 2.5 and 2.6 support ([#47](https://github.com/komposable/dekorator/pull/47))
+- Remove Coveralls usage ([#47](https://github.com/komposable/dekorator/pull/47))
 
 ## [1.2.1] - 2021-10-14
 - Make decorated `Enumerable` not lazy anymore ([#46](https://github.com/komposable/dekorator/pull/46))

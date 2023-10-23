@@ -13,7 +13,6 @@ gem "rails", "~> 6.1.0"
 
 group :test do
   gem "simplecov", require: false
-  gem "coveralls", require: false
 end
 
 gemspec path: "../"

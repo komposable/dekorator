@@ -17,6 +17,7 @@ Nothing yet
 - Remove Coveralls usage ([#47](https://github.com/komposable/dekorator/pull/47))
 
 ## [1.2.1] - 2021-10-14
+### Changed
 - Make decorated `Enumerable` not lazy anymore ([#46](https://github.com/komposable/dekorator/pull/46))
 
 ## [1.2.0] - 2021-10-14

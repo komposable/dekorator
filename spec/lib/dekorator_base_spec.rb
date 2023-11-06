@@ -49,7 +49,7 @@ RSpec.describe Dekorator::Base do
   end
 
   describe "self#decorates_association" do
-    it { expect(decorated_post_with_comments.comments).to all(be_a(CommentDecorator)) }
+    it { expect(decorated_post_with_comments.decorated_comments).to all(be_a(CommentDecorator)) }
   end
 
   describe "self#base_class" do

@@ -54,7 +54,7 @@ module Dekorator
       def decorates_association(relation_name, with: :__guess__)
         relation_name = relation_name.to_sym
 
-        define_method(relation_name) do
+        define_method(:"decorated_#{relation_name}") do
           @_decorated_associations[relation_name] ||= decorate(__getobj__.public_send(relation_name), with: with)
         end
       end

@@ -108,12 +108,12 @@ class PostDecorator < ApplicationDecorator
 end
 ```
 
-In this example, `UserDecorator#posts` will be decorated.
+In this example, `UserDecorator#posts` will be decorated as `#decorated_posts`.
 
 ```ruby
 decorated_user = decorate(User.first)
 decorated_user # => UserDecorator
-decorated_user.posts.first # => PostDecorator
+decorated_user.decorated_posts.first # => PostDecorator
 ```
 
 ### Custom decorator
@@ -148,7 +148,7 @@ end
 
 decorated_user = decorate(User.first)
 decorated_user # => UserDecorator
-decorated_user.posts.first # => ArticleDecorator
+decorated_user.decorated_posts.first # => ArticleDecorator
 ```
 
 ## Compatibility

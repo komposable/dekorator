@@ -153,26 +153,6 @@ decorated_user.decorated_posts.first # => ArticleDecorator
 
 ## Compatibility
 
-### ActiveAdmin
-
-This gem is compatible with [`activeadmin`][activeadmin] ([2.8+](https://github.com/activeadmin/activeadmin/pull/6249)).
-For `activeadmin` before `2.8`, use `dekorator` `1.0.*`.
-
-Simply use `#decorate_with`
-
-```ruby
-# app/admin/post.rb
-ActiveAdmin.register Post do
-  decorate_with PostDecorator
-
-  index do
-    column :title
-    column :image
-    actions
-  end
-end
-```
-
 ### Devise
 
 If you use the [`Devise`][devise] gem you may have an issue if you decorate your

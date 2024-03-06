@@ -12,7 +12,7 @@ This gem has been inspired by our Rails development practices at [Pantographe](h
 
 ## Compatibility
 
-* Ruby 2.7+
+* Ruby 3.0+
 * Rails 6.1+
 
 ## Installation

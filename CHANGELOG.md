@@ -12,6 +12,8 @@ Nothing yet.
 ### Added
 - Add Ruby 3.3 support ([#53](https://github.com/komposable/dekorator/pull/53))
 - Include `#decorated` method in `ActiveRecord::Base` ([#52](https://github.com/komposable/dekorator/pull/52))
+### Fixes
+- Fix RSpec `decorator_spec.rb` template by using `File#exist?` instead `File#exists?` ([#51](https://github.com/komposable/dekorator/pull/51))
 ### Removed
 - Drop Ruby 2.7 support ([#53](https://github.com/komposable/dekorator/pull/53))
 - Drop Rails 6.0 support ([#53](https://github.com/komposable/dekorator/pull/53))
@@ -23,8 +25,6 @@ Nothing yet.
 ## [1.3.0] - 2023-11-06
 ### Added
 - Add Rails 7.1 support ([#49](https://github.com/komposable/dekorator/pull/49))
-### Fixes
-- Fix RSpec `decorator_spec.rb` template by using `File#exist?` instead `File#exists?` ([#51](https://github.com/komposable/dekorator/pull/51))
 ### Removed
 - Add Rails 7.0 on CI tests via Appraisals ([#47](https://github.com/komposable/dekorator/pull/47))
 - Drop Ruby 2.5 and 2.6 support ([#47](https://github.com/komposable/dekorator/pull/47))

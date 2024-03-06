@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require '<%= File.exists?("spec/rails_helper.rb") ? "rails_helper" : "spec_helper" %>'
+require '<%= File.exist?("spec/rails_helper.rb") ? "rails_helper" : "spec_helper" %>'
 
 # Example:
 #

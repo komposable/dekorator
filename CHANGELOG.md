@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 - Add Ruby 3.3 support ([#53](https://github.com/komposable/dekorator/pull/53))
+- Include `#decorated` method in `ActiveRecord::Base` ([#52](https://github.com/komposable/dekorator/pull/52))
 ### Removed
 - Drop Ruby 2.7 support ([#53](https://github.com/komposable/dekorator/pull/53))
 - Drop Rails 6.0 support ([#53](https://github.com/komposable/dekorator/pull/53))

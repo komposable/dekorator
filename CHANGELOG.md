@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- Add Ruby 3.3 support ([#53](https://github.com/komposable/dekorator/pull/53))
 ### Removed
 - Drop Ruby 2.7 support ([#53](https://github.com/komposable/dekorator/pull/53))
 - Drop Rails 6.0 support ([#53](https://github.com/komposable/dekorator/pull/53))

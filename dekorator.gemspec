@@ -16,21 +16,21 @@ Gem::Specification.new do |spec|
   spec.license     = "MIT"
 
   spec.metadata    = {
-    "homepage_uri" => spec.homepage,
+    "homepage_uri"    => spec.homepage,
     "changelog_uri"   => "https://github.com/komposable/dekorator/blob/main/CHANGELOG.md",
     "source_code_uri" => spec.homepage,
     "bug_tracker_uri" => "https://github.com/komposable/dekorator/issues",
-    "rubygems_mfa_required" => "true"
-}
+    "rubygems_mfa_required" => "true",
+  }
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
   spec.files = Dir["CHANGELOG.md", "LICENSE.txt", "README.md", "lib/**/*"]
   spec.require_paths = ["lib"]
 
-  spec.required_ruby_version = Gem::Requirement.new(">= 3.0.0")
+  spec.required_ruby_version = Gem::Requirement.new(">= 3.1.0")
 
-  spec.add_runtime_dependency "actionview", ">= 6.1", "< 7.2"
-  spec.add_runtime_dependency "activerecord", ">= 6.1", "< 7.2"
-  spec.add_runtime_dependency "activesupport", ">= 6.1", "< 7.2"
+  spec.add_runtime_dependency "actionview", ">= 7.0", "< 8.0"
+  spec.add_runtime_dependency "activerecord", ">= 7.0", "< 8.0"
+  spec.add_runtime_dependency "activesupport", ">= 7.0", "< 8.0"
 end

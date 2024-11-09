@@ -22,18 +22,21 @@ jobs:
           - { ruby: "3.1", rails: "7.2.x" }
           - { ruby: "3.2", rails: "7.2.x" }
           - { ruby: "3.3", rails: "7.2.x" }
+          - { ruby: "3.1", rails: "8.0.x" }
+          - { ruby: "3.2", rails: "8.0.x" }
+          - { ruby: "3.3", rails: "8.0.x" }
           - { ruby: "3.2", rails: "head" }
           - { ruby: "3.3", rails: "head" }
 
     env:
       BUNDLE_GEMFILE: gemfiles/rails_${{ matrix.versions.rails }}.gemfile
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Update gemspec to test in head version
       if: matrix.versions.rails == 'head'
       run: |
-        sed -i -e 's/, "< 8.0"//g' dekorator.gemspec
+        sed -i -e 's/, "< 8.1"//g' dekorator.gemspec
 
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1

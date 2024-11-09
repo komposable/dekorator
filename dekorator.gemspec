@@ -30,7 +30,7 @@ Gem::Specification.new do |spec|
 
   spec.required_ruby_version = Gem::Requirement.new(">= 3.1.0")
 
-  spec.add_runtime_dependency "actionview", ">= 7.0", "< 8.0"
-  spec.add_runtime_dependency "activerecord", ">= 7.0", "< 8.0"
-  spec.add_runtime_dependency "activesupport", ">= 7.0", "< 8.0"
+  spec.add_runtime_dependency "actionview", ">= 7.0", "< 8.1"
+  spec.add_runtime_dependency "activerecord", ">= 7.0", "< 8.1"
+  spec.add_runtime_dependency "activesupport", ">= 7.0", "< 8.1"
 end

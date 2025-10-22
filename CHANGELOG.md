@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+Nothing yet.
+
+## [1.8.0] - 2025-10-22
 ### Added
 - Add Rails 8.1 support ([#57](https://github.com/komposable/dekorator/pull/57))
 
@@ -84,7 +87,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Create `dekorator:install` generator ([a2a36d66](https://github.com/komposable/dekorator/commit/a2a36d66c6de6cb0a00f783794cd29f899bc04b6))
 - Create `decorator` generator ([a2a36d66](https://github.com/komposable/dekorator/commit/a2a36d66c6de6cb0a00f783794cd29f899bc04b6))
 
-[Unreleased]: https://github.com/komposable/dekorator/compare/v1.7.0...main
+[Unreleased]: https://github.com/komposable/dekorator/compare/v1.8.0...main
+[1.8.0]: https://github.com/komposable/dekorator/compare/v1.7.0...v1.8.0
 [1.7.0]: https://github.com/komposable/dekorator/compare/v1.6.0...v1.7.0
 [1.6.0]: https://github.com/komposable/dekorator/compare/v1.5.0...v1.6.0
 [1.5.0]: https://github.com/komposable/dekorator/compare/v1.4.0...v1.5.0

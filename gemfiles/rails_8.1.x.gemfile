@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 
-gem "rails", "~> 7.0.0"
+gem "rails", "~> 8.1.0"
 gem "appraisal", require: false
 gem "rubocop", require: false
 gem "rubocop-performance", require: false
